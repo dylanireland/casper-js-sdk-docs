@@ -157,20 +157,19 @@ const interval = 2000 //milliseconds
 var poll = setInterval(async function(deployHash) {
   try {
     response = await client.getDeploy(deployHash)
-  	if (response[1].execution_results.length != 0) {
+    if (response[1].execution_results.length != 0) {
       //Deploy executed
       if (response[1].execution_results[0].result.Failure != null) {
        	console.error("Deployment failed")
         clearInterval(poll)
         return
       }
-      const contractHash = iterateTransforms(response[1].execution_results[0].result.Success.effect.transforms) //Next example
-      console.log(contractHash) //The highscore contract hash
-      clearInterval(poll)
-    }
-	} catch(error) {
-  	console.error(error)
-	}
+    const contractHash = iterateTransforms(response[1].execution_results[0].result.Success.effect.transforms) //Next example
+    console.log(contractHash) //The highscore contract hash
+    clearInterval(poll)
+  } catch(error) {
+    console.error(error)
+  }
 }, 2000, deployHash)
 
 ```
@@ -208,12 +207,12 @@ const chainName = "casper-test" //Use "casper" for mainnet
 const max_gas_motes = "2000000000" //2 CSPR
 
 const entrypointCallDeploy = contract.callEntrypoint(
-	entrypoint,
+  entrypoint,
   args,
   sender,
   chainName,
   max_gas_motes,
-	[keys]
+  [keys]
 )
 ```
 
@@ -236,7 +235,7 @@ const interval = 2000 //milliseconds
 var poll = setInterval(async function(entrypointCallDeployHash) {
   try {
     response = await client.getDeploy(entrypointCallDeployHash)
-  	if (response[1].execution_results.length != 0) {
+    if (response[1].execution_results.length != 0) {
       //Deploy executed
       if (response[1].execution_results[0].result.Success != null) {
        	console.error("Error")
@@ -244,10 +243,9 @@ var poll = setInterval(async function(entrypointCallDeployHash) {
         console.log("Success")
       }
       clearInterval(poll)
+    } catch(error) {
+      console.error(error)
     }
-	} catch(error) {
-  	console.error(error)
-	}
 }, 2000, deployHash)
 ```
 

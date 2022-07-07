@@ -170,7 +170,7 @@ var poll = setInterval(async function(deployHash) {
   } catch(error) {
     console.error(error)
   }
-}, 2000, deployHash)
+}, interval, deployHash)
 
 ```
 
@@ -246,7 +246,7 @@ var poll = setInterval(async function(entrypointCallDeployHash) {
     } catch(error) {
       console.error(error)
     }
-}, 2000, deployHash)
+}, interval, deployHash)
 ```
 
 Next, learn how to query on-chain data in the [informational endpoints documentation]().

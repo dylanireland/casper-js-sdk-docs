@@ -57,7 +57,7 @@ let session = DeployUtil.ExecutableDeployItem.newTransferWithOptionalTransferId(
 )
 ```
 
-Now create and sign the deploy with `makeDeploy`:
+Now create and sign the deploy with `makeDeploy` and `signDeploy`:
 
 ```typescript
 let deploy = DeployUtil.makeDeploy(deployParams, session, payment)
